@@ -32,6 +32,80 @@
 
 docext is a comprehensive on-premises document intelligence toolkit powered by vision-language models (VLMs). It provides three core capabilities:
 
+## 🚀 Getting Started & Development
+
+This section guides you through setting up the project, managing API keys, and using the development tools.
+
+### Installation
+
+This project uses [Poetry](https://python-poetry.org/) for dependency management and packaging.
+
+1.  **Install Poetry:**
+    If you don't have Poetry installed, follow the [official installation instructions](https://python-poetry.org/docs/#installation).
+
+2.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/NanoNets/docext.git
+    cd docext
+    ```
+
+3.  **Install dependencies:**
+    This command installs all main and development dependencies.
+    ```bash
+    poetry install
+    ```
+    This will create a virtual environment managed by Poetry. To run any commands, you can either activate the virtual environment (`poetry shell`) or prefix commands with `poetry run`.
+
+### API Key Management
+
+API keys and other sensitive configurations are managed using a `.env` file.
+
+1.  **Create a `.env` file:**
+    Copy the example file to `.env`:
+    ```bash
+    cp .env.example .env
+    ```
+2.  **Edit `.env`:**
+    Open the `.env` file and add your API keys. For example, to use Mistral OCR:
+    ```
+    MISTRAL_API_KEY="your_mistral_api_key_here"
+    ```
+    The `VLM_MODEL_URL` can also be configured here if needed.
+
+    **Important:** The `.env` file is included in `.gitignore` and should **never** be committed to the repository.
+
+### Development Tools
+
+We use Ruff for linting/formatting and MyPy for static type checking.
+
+**1. Linting and Formatting with Ruff**
+
+Ruff is an extremely fast Python linter and formatter, written in Rust.
+
+*   **Format the entire codebase:**
+    ```bash
+    poetry run ruff format .
+    ```
+*   **Check for linting issues:**
+    ```bash
+    poetry run ruff check .
+    ```
+*   **Automatically fix linting issues (where possible):**
+    ```bash
+    poetry run ruff check --fix .
+    ```
+
+**2. Static Type Checking with MyPy**
+
+MyPy helps ensure type correctness in the codebase.
+
+*   **Run MyPy checks:**
+    ```bash
+    poetry run mypy .
+    ```
+
+You might want to integrate these tools into your IDE or pre-commit hooks for a smoother development workflow. Configuration for these tools can be found in the `pyproject.toml` file.
+
 **📄 PDF & Image to Markdown Conversion**: Transform documents into structured markdown with intelligent content recognition, including LaTeX equations, signatures, watermarks, tables, and semantic tagging.
 
 **🔍 Document Information Extraction**: OCR-free extraction of structured information (fields, tables, etc.) from documents such as invoices, passports, and other document types, with confidence scoring.
@@ -56,6 +130,7 @@ The "Image and PDF to markdown" feature can now utilize Mistral OCR for high-acc
 🔍 For in-depth information, see the [release blog](https://nanonets.com/research/nanonets-ocr-s/).
 
 For setup instructions and additional details, check out the full feature guide for the [pdf to markdown](https://github.com/NanoNets/docext/blob/main/PDF2MD_README.md).
+> Note: The setup instructions within feature-specific guides like the one above might be outdated. Refer to the "Installation" section in this main README for the current Poetry-based setup.
 
 ### Intelligent Document Processing Leaderboard
 This benchmark evaluates performance across seven key document intelligence challenges:
@@ -73,6 +148,7 @@ This benchmark evaluates performance across seven key document intelligence chal
 📊 **Live leaderboard:** [https://idp-leaderboard.org](https://idp-leaderboard.org)
 
 For setup instructions and additional details, check out the full feature guide for the [Intelligent Document Processing Leaderboard](https://github.com/NanoNets/docext/tree/main/docext/benchmark).
+> Note: The setup instructions within feature-specific guides like the one above might be outdated. Refer to the "Installation" section in this main README for the current Poetry-based setup.
 
 ### Docext
 - **Flexible extraction**: Define custom fields or use pre-built templates
@@ -87,6 +163,7 @@ For setup instructions and additional details, check out the full feature guide 
   - Add/delete new fields/columns for other templates.
 
 For more details (Installation, Usage, and so on), please check out the [feature guide](https://github.com/NanoNets/docext/blob/main/EXT_README.md).
+> Note: The setup instructions within feature-specific guides like the one above might be outdated. Refer to the "Installation" section in this main README for the current Poetry-based setup.
 
 ## Change Log
 

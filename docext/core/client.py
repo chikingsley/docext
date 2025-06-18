@@ -5,10 +5,12 @@ import base64
 from mistralai import Mistral
 from mistralai.models.ocr import OCRResponse
 import mimetypes
+from dotenv import load_dotenv # Added
 
 import requests
 from litellm import completion
 
+load_dotenv() # Load environment variables from .env file
 
 def sync_request(
     messages: list[dict],
@@ -58,7 +60,7 @@ class MistralOCRClient:
     def __init__(self):
         self.api_key = os.environ.get("MISTRAL_API_KEY")
         if not self.api_key:
-            raise ValueError("MISTRAL_API_KEY environment variable not set.")
+            raise ValueError("MISTRAL_API_KEY environment variable not set (or not found in .env file).")
         self.client = Mistral(api_key=self.api_key)
 
     def _encode_file_to_base64(self, file_path: str) -> str:

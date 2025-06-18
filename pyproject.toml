@@ -1,0 +1,87 @@
+[tool.poetry]
+name = "docext"
+version = "0.1.13"  # From setup.py
+description = "Onprem information extraction from documents" # From setup.py
+authors = ["Souvik Mandal <souvik@nanonets.com>"] # From setup.py
+readme = "README.md"
+license = "MIT" # From setup.py classifiers
+homepage = "https://github.com/nanonets/docext" # From setup.py
+repository = "https://github.com/nanonets/docext" # From setup.py
+classifiers = [
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+packages = [{ include = "docext" }]
+
+[tool.poetry.dependencies]
+python = ">=3.11" # From setup.py
+accelerate = "*"
+gradio = "==5.23.2"
+json-repair = "*"
+litellm = "*"
+loguru = "*"
+mdpd = "*"
+numpy = "*"
+pandas = "*"
+PyMuPDF = "*"
+python-dotenv = "*" # Added for .env support
+python-levenshtein = ">=0.20.0" # More open version
+requests = "*"
+# setuptools is managed by Poetry
+tabulate = "*"
+tenacity = "*"
+types-requests = "*"
+vllm = "0.8.3" # From vllm==v0.8.3
+xgrammar = "0.1.17"
+pdf2image = "*"
+mistralai = "*"
+# Omitting direct transformers git dependency for now, assuming vllm handles it.
+# If needed, it would be:
+# transformers = { git = "https://github.com/huggingface/transformers.git", rev = "49b5ab6a27511de5168c72e83318164f1b4adc43" }
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "*" # From setup.py extras_require
+ruff = "*"      # Added for linting/formatting
+mypy = "*"      # Added for type checking
+
+[tool.poetry.scripts]
+docext = "docext.__main__:main" # From setup.py entry_points
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# Explicitly set the Python version to target.
+# Assumes Python 3.11 based on previous setup.py.
+target-version = "py311"
+
+[tool.ruff.lint]
+# Enable a sensible default set of rules, including pyflakes, pycodestyle, etc.
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = []
+
+# Allow unused variables in `__init__.py` and `__main__.py` for convenience
+# and a common pattern in such files.
+# per-file-ignores = {
+#   "__init__.py" = ["F401"],
+#   "__main__.py" = ["F401"]
+# }
+
+[tool.ruff.format]
+# Use black-compatible formatting.
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+warn_return_any = true
+warn_unused_configs = true
+# Add other configurations as needed, for example:
+# disallow_untyped_defs = true
+# disallow_incomplete_defs = true
