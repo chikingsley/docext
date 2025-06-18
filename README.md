@@ -50,6 +50,9 @@ Convert both PDF and images to markdown with content recognition and semantic ta
 - **Checkboxes and Radio Buttons**: Converts form checkboxes and radio buttons into standardized Unicode symbols (☐, ☑, ☒).
 - **Table Detection**: Convert complex tables into html tables.
 
+**Mistral OCR Integration:**
+The "Image and PDF to markdown" feature can now utilize Mistral OCR for high-accuracy text extraction. To enable this, set the `MISTRAL_API_KEY` environment variable with your Mistral API key. If the key is not provided or if Mistral OCR processing fails, the system will use the default VLLM-based extraction.
+
 🔍 For in-depth information, see the [release blog](https://nanonets.com/research/nanonets-ocr-s/).
 
 For setup instructions and additional details, check out the full feature guide for the [pdf to markdown](https://github.com/NanoNets/docext/blob/main/PDF2MD_README.md).

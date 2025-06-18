@@ -17,3 +17,4 @@ types-requests
 vllm==v0.8.3
 xgrammar==0.1.17
 pdf2image
+mistralai
